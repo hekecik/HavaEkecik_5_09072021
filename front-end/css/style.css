@@ -27,5 +27,14 @@ h1 {
 }
 
 main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding-top: 9.375rem;
+}
+
+img {
+    width: 37.5rem;
+    padding-bottom: 1.875rem;
 }

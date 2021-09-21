@@ -1,7 +1,7 @@
 function getArticles() {
     fetch("http://localhost:3000/api/cameras")
-        .then(function (httpBodyresponse) {
-            return httpBodyresponse.json();
+        .then(function (res) {
+            return res.json();
         })
         .then(function(articles) {
             console.log(articles);
@@ -12,8 +12,14 @@ function getArticles() {
         })
 }
 
-function displayArticles(articles) {
-    console.log('articles', articles);
-    let cameras = document.getElementById("cameras");
+function displayArticles(cameras) {
+    cameras.forEach(camera => {
+        console.log(camera)
+        const cameraDiv = document.getElementById("cameras");
+        cameraDiv.innerHTML += `<div>
+        <p>${camera.name}</p>
+        <a href="product.html?id=${camera._id}"> <img src="${camera.imageUrl}"/></a>
+        </div>`;
+    });
 }
 getArticles();
