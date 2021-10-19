@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <meta name="description"
+        content="ORINOCO est un site de vente en ligne d'ours en peluche, de meubles en chêne et de caméras anciennes" />
+    <title>Votre séléction</title>
+</head>
+
+<body>
+    <header class="">
+        <img class="navbar_logo" src="img/logo.png" alt="Logo d'Orinoco" />
+    </header>
+    <main class="d-flex flex-row justify-content-around main-basket">
+        <div id="basket-resume">
+            <p id="panierVide">Votre panier est vide</p>
+        </div>
+        <div class="form">
+            <form method="post" name="form-panier">
+                    <legend>Civilité</legend>
+                    <div class="form__group">
+                        <div class="form__group">
+                            <label for="formNom">Nom : </label>
+                            <input type="text" id="formNom" class="form-control input-control" required name="formNom" />
+                        </div>
+                        <div class="form__group">
+                            <label for="formPrenom" class="right-inline mt-2">Prénom :</label>
+                            <input type="text" id="formPrenom" class="form-control input-control" required name="formPrenom" />
+                        </div>
+                    </div>
+                    <legend class="mt-3">Coordonnées</legend>
+                    <div class="form__group">
+                        <label for="formMail" >E-mail :</label>
+                        <input type="email" id="formMail" class="form-control input-control" required name="formMail" />
+                    </div>
+                    <div class="form__group">
+                        <label for="formAdresse" class="mt-2">Adresse :</label>
+                        <input type="text" id="formAdresse" class="form-control input-control" required name="formAdresse" />
+                    </div>
+                    <div class="form__group">
+                        <label for="formVille" class="mt-2">Ville :</label>
+                        <input type="text" id="formVille" class="form-control input-control" required name="formVille" />
+                    </div>
+                <input type="button" value="Je valide mon panier et mes informations" class="p-2 mt-5 btn-add"/>
+            </form>
+        </div>
+    </main>
+    <footer class="footer-basket">
+        <p>
+            Site réalisé dans le cadre du projet 5 du parcours d'<a
+                href="https://openclassrooms.com/">Openclassrooms</a>
+        </p>
+    </footer>
+
+    <script src=""></script>
+    <script src="https://kit.fontawesome.com/07a0a1cffa.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

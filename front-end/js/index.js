@@ -18,7 +18,7 @@ function displayArticles(cameras) {
         const cameraDiv = document.getElementById("cameras");
         cameraDiv.innerHTML += `<div>
         <p>${camera.name}</p>
-        <a href="product.html?id=${camera._id}"> <img src="${camera.imageUrl}"/></a>
+        <a href="product.html?id=${camera._id}"> <img class="cameras-img" src="${camera.imageUrl}"/></a>
         </div>`;
     });
 }
