@@ -1,3 +1,7 @@
+
+// ------------------------ Page d'accueil ------------------------------------------------------
+getArticles();
+
 function getArticles() {
     fetch("http://localhost:3000/api/cameras")
         .then(function (res) {
@@ -22,4 +26,5 @@ function displayArticles(cameras) {
         </div>`;
     });
 }
-getArticles();
+
+// ------------------------ Page produit ------------------------------------------------------

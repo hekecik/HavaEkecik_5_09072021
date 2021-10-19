@@ -18,14 +18,18 @@
 <body>
     <a href="index.html" class="back-button"> Retour à la page d'accueil</a>
     <div id="camera"></div>
+    <p class="camera-name"></p>
     <div class="product-description-order">
-    <div>
-    <label for="lensesChoice">Taille de la lentille :</label>
+    <div class="d-flex flex-column align-items-center">
+    <label for="lensesChoice" class="mb-2">Taille de la lentille :</label>
         <select id="lensesChoice">
-            <option value="">Sélectionnez votre choix</option>
+            <option>Sélectionnez votre choix</option>
           </select>
-    <label for="cameraNum">Quantité :</label>
+    <label for="cameraNum" class="mt-2">Quantité :</label>
         <input id="cameraNum" type="number" name="bearNum" value="1" min="1">
+    <div class="added-to-cart-confirmation">
+        <p class="text-confirmation"></p>
+    </div>
     </div>
     <div id="btn-add-local-storage"></div>
     </div>
