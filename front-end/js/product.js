@@ -48,7 +48,7 @@ function getOneCamera(camera){
 }
 
 function addToLocalStorage(camera){
-    console.log(camera);
+    console.log(camera); 
 }
 function getOptionCamera(product){
     productSelectedlenses.forEach(product => {

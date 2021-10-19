@@ -13,7 +13,7 @@ function getArticles() {
 }
 
 function displayArticles(cameras) {
-    cameras.forEach(camera => {
+    cameras.forEach(camera => { 
         console.log(camera)
         const cameraDiv = document.getElementById("cameras");
         cameraDiv.innerHTML += `<div>
