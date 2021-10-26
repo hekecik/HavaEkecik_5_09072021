@@ -1,98 +1,51 @@
+// ------------------------ Page produit ------------------------------------------------------
 let params = new URL(document.location).searchParams;
-let id = params.get("id");
+let idArticleChoisi = params.get("id");
+let selectedCamera;
 
 const APIURL = "http://localhost:3000/api/cameras";
 
-const productDescription = document.querySelector(".bloc-description");
-const productName = document.querySelector("camera-name");
-const productPrice = document.querySelector(".cameras-price");
-const cameraNumber = document.querySelector("#cameraNum");
-const lensesChoice = document.querySelector("#lensesChoice");
 
 getProduct();
-
+// récupération des caméras dans le localStorage
 function getProduct() {
-    fetch(`http://localhost:3000/api/cameras/${id}`)
-        .then(function (res) {
-            return res.json();
-        })
-        .then(function(product) {
-            console.log(product);
-            var camera = product;
-            getOneCamera(camera);
-        })
-        .catch (function(error) {
-            alert(error);
-        })
+    const listArticles = JSON.parse(localStorage.getItem("article"));
+    const article = listArticles.filter(articleChoice => articleChoice._id == idArticleChoisi);
+    getOneCamera(article[0]);
 }
 
-
-function getOneCamera(camera){
-        console.log(camera)
-        const cameraDiv = document.getElementById("camera");
-        const selectLense = document.getElementById("lensesChoice");
-        for (let i = 0; i < camera.lenses.length; i++) {
-            let option = document.createElement("option");
-            option.innerText = camera.lenses[i];
-            selectLense.appendChild(option);
-        }
-
-        cameraDiv.innerHTML += `<div class="cameras-product">
-        <p ${camera.lenses}/p>
+// Affichage d'une camera sélectionnée
+function getOneCamera(camera) {
+    selectedCamera = camera;
+    const cameraDiv = document.getElementById("camera");
+    const selectLense = document.getElementById("lensesChoice");
+    // Sélection des lentilles
+    for (let i = 0; i < camera.lenses.length; i++) {
+        let option = document.createElement("option");
+        option.innerText = camera.lenses[i];
+        selectLense.appendChild(option);
+    }
+    // Affichage du produit
+    cameraDiv.innerHTML += `<div class="cameras-product">
         <img class="cameras-description-img" src="${camera.imageUrl}"/>
-        <p>${camera.name}</p>
-        <div class="bloc-description"><h3> Description du produit</h3>
+        <h4 class="cameras-name">${camera.name}</h4>
+        <div class="bloc-description"><h5> Description du produit</h5>
         <p class="cameras-description">${camera.description}</p></div>
-        <div class="bloc-price"><h3>Prix</h3>
-        <p class="cameras-price">${camera.price/100} </p></div>
+        <div class="bloc-price"><h5>Prix</h5>
+        <p class="cameras-price">${camera.price/100}€</p></div>
         </div>`;
-        const divAddLocalStorage = document.getElementById("btn-add-local-storage");
-        divAddLocalStorage.innerHTML += `<button class="p-2 mt-3" onclick="addToLocalStorage()">Ajouter au panier</button>`;
 }
 
-function getOptionCamera(product){
-    productSelectedlenses.forEach(product => {
-    let optionProduct = document.createElement("option");
-    document.getElementById("lensesChoice").innerHTML = `<option>${camera.lenses}</option>`;
-})
-}
+// Ajout de la sélection au panier
+addToBasket()
 
-function addToLocalStorage(camera) {
-    const addToBasket = document.querySelector("#btn-add-local-storage");
-    const textConfirmation = document.querySelector(".text-confirmation");
-    const confirmation = document.querySelector(".added-to-cart-confirmation");
-    if(!addToBasket)return;
+function addToBasket() {
 
-    addToBasket.addEventListener("click", () => {
-        if (cameraNumber.value > 0 && cameraNumber.value < 100) {
-        // récupération des valeurs
-        let optionsProduct = {
-            name: productName,
-            price: productPrice,
-            _id: id,
-            quantity: cameraNumber
-        };
-        console.log(optionsProduct);
+    localStorage.setItem("product", JSON.stringify(selectedCamera));
+    localStorage.setItem("productQuantity", JSON.stringify(cameraNum.value));
+    localStorage.setItem("productLensesChoice", JSON.stringify(lensesChoice.value));
 
-        let produits = [];
-
-        if (localStorage.getItem("products") !== null) {
-            produits = JSON.parse(localStorage.getItem("products"));
-        }
-
-        else {
-               produits.push(optionsProduct);
-               localStorage.setItem("products", JSON.stringify(produits));
-           }
-        }
-        else {
-            textConfirmation.style.background = "red";
-            textConfirmation.style.border = "red";
-            textConfirmation.style.color = "black";
-            textConfirmation.style.whiteSpace = "normal";
-            textConfirmation.innerText = `La quantité doit être comprise entre 1 et 99,.`;
-            confirmation.style.visibility = "visible";
-        }
-
-    });
+    //if(localStorage.getItem("product") != null)
+    // alors ajoute au panier
+    // sinon affiche votre panier est vide
 }

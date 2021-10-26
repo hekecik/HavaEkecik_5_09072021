@@ -1,21 +1,23 @@
-
 // ------------------------ Page d'accueil ------------------------------------------------------
 getArticles();
-
+// Récupération des articles auprès de l'API
 function getArticles() {
     fetch("http://localhost:3000/api/cameras")
         .then(function (res) {
             return res.json();
         })
-        .then(function(articles) {
+        // Envoi de la liste des caméras dans le localStorage
+        .then(function (articles) {
             console.log(articles);
+            localStorage.setItem("article", JSON.stringify(articles));
             displayArticles(articles);
         })
-        .catch (function(error) {
+        .catch(function (error) {
             alert(error);
         })
 }
 
+// affichage de la liste des caméras
 function displayArticles(cameras) {
     cameras.forEach(camera => {
         console.log(camera)
@@ -26,5 +28,3 @@ function displayArticles(cameras) {
         </div>`;
     });
 }
-
-// ------------------------ Page produit ------------------------------------------------------
