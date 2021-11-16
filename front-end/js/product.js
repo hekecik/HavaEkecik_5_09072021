@@ -2,6 +2,7 @@
 let params = new URL(document.location).searchParams;
 let idArticleChoisi = params.get("id");
 let selectedCamera;
+let products = JSON.parse(localStorage.getItem("products")) || [];
 
 const APIURL = "http://localhost:3000/api/cameras";
 
@@ -40,10 +41,18 @@ function getOneCamera(camera) {
 addToBasket()
 
 function addToBasket() {
+    let size = cameraNum.value;
+    let exist = products.find(c =>c.camera._id === selectedCamera._id);
+    console.log('exist ====>', exist);
+    if (exist === undefined) {
+        products.push({size: size, camera: selectedCamera});
+    }
+    localStorage.setItem("products", JSON.stringify(products));
 
-    localStorage.setItem("product", JSON.stringify(selectedCamera));
-    localStorage.setItem("productQuantity", JSON.stringify(cameraNum.value));
-    localStorage.setItem("productLensesChoice", JSON.stringify(lensesChoice.value));
+
+    // localStorage.setItem("product", JSON.stringify(selectedCamera));
+    // localStorage.setItem("productQuantity", JSON.stringify(cameraNum.value));
+    // localStorage.setItem("productLensesChoice", JSON.stringify(lensesChoice.value));
 
     //if(localStorage.getItem("product") != null)
     // alors ajoute au panier
