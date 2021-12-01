@@ -6,32 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" type="text/css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <meta name="description" content="ORINOCO est un site de vente en ligne d'ours en peluche, de meubles en chêne et de caméras anciennes">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <meta name="description"
+        content="ORINOCO est un site de vente en ligne d'ours en peluche, de meubles en chêne et de caméras anciennes" />
     <title>Confirmation de votre commande</title>
 </head>
 
+
 <body>
     <header>
-			<img class="navbar_logo" src="img/logo.png" alt="Logo d'Orinoco">
+		<div class="limitedWidthBlockContainer informations">
+		    <div class="limitedWidthBlock">
+		        <ul>
+		            <li><img src="img/phone.svg" alt="logo de téléphone" class="informations__phone">01 23 45 67 89</li>
+		            <li><img src="img/mail.svg" alt="logo d'une enveloppe" class="informations__mail">support@name.com</li>
+		            <li><img src="img/adress.svg" alt="logo d'un point de géolocalisation" class="informations__address">10
+		                boulevard Montmartre 75009 Paris</li>
+		        </ul>
+		    </div>
+		</div>
+		<div class="limitedWidthBlockContainer menu">
+		    <div class="limitedWidthBlock">
+		        <a href="./index.html">
+		            <img class="navbar_logo" src="img/logo.png" alt="Logo d'Orinoco">
+		        </a>
+		        <nav class="navbar_link">
+		            <ul>
+		                <a href="index.html">
+		                    <li>Accueil</li>
+		                </a>
+		                <a href="panier.html">
+		                    <li>Panier</li>
+		                </a>
+		            </ul>
+		        </nav>
+		    </div>
+		</div>
+		<img class="banniere" src="img/background-img.jpg" alt="Banniere">
     </header>
-    <section class="order-confirm">
-            <div>
-                <h2>Merci pour votre achat <span id="lastName"></span> !</h2>
-                <div class="order-confirm__card__resume__info">
-                    <p>numéro de commande : <span id="orderId"></span></p>
-                </div>
-            </div>
-            <nav class="order-confirm__card__nav">
-                <p>Pour revenir à l'accueil de notre boutique cliquez sur ce lien <a href="index.html" class="nav__link">Accueil</a></p>
-            </nav>
-        </section>
+    <main class="limitedWidthBlockContainer">
+        <div class="limitedWidthBlock" id="limitedWidthBlock">
+
+            <div class="confirmation" id="validOrder"></div>
+
+        </div>
+    </main>
 	<footer>
-		<p>Site réalisé dans le cadre du projet 5 du parcours d'<a href="https://openclassrooms.com/">Openclassrooms</a></p>
+	    <div class="limitedWidthBlockContainer footerMain">
+	        <div class="limitedWidthBlock">
+	            <div>
+	                <p>10 boulevard Montmartre <br>75009 Paris</p>
+	            </div>
+	            <div>
+	                <p>Téléphone : 01 23 45 67 89</p>
+	            </div>
+	            <div>
+	                <p>Email : support@name.com</p>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="limitedWidthBlockContainer footerSecondary">
+	        <div class="limitedWidthBlock">
+	            <p>© Copyright 2021 - 2042 | Site réalisé dans le cadre du projet 5 du parcours d'<a
+	                    href="https://openclassrooms.com/">Openclassrooms</a> | All Rights Reserved</p>
+	        </div>
+	    </div>
 	</footer>
 
     <script src="js/validOrder.js"></script>

@@ -1,25 +1,29 @@
 // ------------------------ Page produit ------------------------------------------------------
 let params = new URL(document.location).searchParams;
 let idArticleChoisi = params.get("id");
+console.log(idArticleChoisi);
 let selectedCamera;
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-const APIURL = "http://localhost:3000/api/cameras";
-
+let cameraDiv = document.getElementById("camera");
+let selectLense = document.getElementById("lensesChoice");
 
 getProduct();
-// récupération des caméras dans le localStorage
+// récupération des caméras dans l'API
 function getProduct() {
-    const listArticles = JSON.parse(localStorage.getItem("article"));
-    const article = listArticles.filter(articleChoice => articleChoice._id == idArticleChoisi);
-    getOneCamera(article[0]);
+     fetch(`http://localhost:3000/api/cameras/${idArticleChoisi}`)
+         .then(function (res) {
+             return res.json();
+         })
+         .then(function (article) {
+             getOneCamera(article);
+         })
+         .catch(function (error) {
+             alert(error);
+         })
 }
 
 // Affichage d'une camera sélectionnée
 function getOneCamera(camera) {
     selectedCamera = camera;
-    const cameraDiv = document.getElementById("camera");
-    const selectLense = document.getElementById("lensesChoice");
     // Sélection des lentilles
     for (let i = 0; i < camera.lenses.length; i++) {
         let option = document.createElement("option");
@@ -28,33 +32,49 @@ function getOneCamera(camera) {
     }
     // Affichage du produit
     cameraDiv.innerHTML += `<div class="cameras-product">
+        <div class="bloc-product"><h4 class="cameras-name">${camera.name}</h4>
         <img class="cameras-description-img" src="${camera.imageUrl}"/>
-        <h4 class="cameras-name">${camera.name}</h4>
-        <div class="bloc-description"><h5> Description du produit</h5>
+        </div>
+        <div class="all-bloc"><div class="bloc-description"><h5> Description du produit</h5>
         <p class="cameras-description">${camera.description}</p></div>
         <div class="bloc-price"><h5>Prix</h5>
-        <p class="cameras-price">${camera.price/100}€</p></div>
+        <p class="cameras-price">${camera.price/100}€</p></div></div>
         </div>`;
-}
+};
 
 // Ajout de la sélection au panier
-addToBasket()
 
 function addToBasket() {
-    let size = cameraNum.value;
-    let exist = products.find(c =>c.camera._id === selectedCamera._id);
-    console.log('exist ====>', exist);
-    if (exist === undefined) {
-        products.push({size: size, camera: selectedCamera});
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    console.log(products);
+    let total = JSON.parse(localStorage.getItem("total")) || 0;
+    let quantity = document.getElementById("cameraQuantity").value;
+    selectLense = document.getElementById("lensesChoice").value;
+    let totalPrice = (selectedCamera.price / 100) * quantity;
+    let selectedCameraIndex = products.findIndex(item => item.camera._id == selectedCamera._id);
+
+     if (selectedCameraIndex == -1) {
+         products.push({
+            size: quantity,
+            selectedLense: selectLense,
+            camera: selectedCamera,
+            totalProductPrice: totalPrice,
+        });
+    } else {
+        products.splice(selectedCameraIndex, 1);
+        products.push({
+            size: quantity,
+            selectedLense: selectLense,
+            camera: selectedCamera,
+            totalProductPrice: totalPrice,
+        });
     }
+    products.forEach(product => {
+        total += product.totalProductPrice;
+
+    });
+
+    localStorage.setItem("prixTotalBasket", total);
     localStorage.setItem("products", JSON.stringify(products));
-
-
-    // localStorage.setItem("product", JSON.stringify(selectedCamera));
-    // localStorage.setItem("productQuantity", JSON.stringify(cameraNum.value));
-    // localStorage.setItem("productLensesChoice", JSON.stringify(lensesChoice.value));
-
-    //if(localStorage.getItem("product") != null)
-    // alors ajoute au panier
-    // sinon affiche votre panier est vide
-}
+    alert('Ajouté au panier !')
+};

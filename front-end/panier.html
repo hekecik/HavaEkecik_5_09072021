@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap" rel="stylesheet" />
@@ -19,65 +17,96 @@
 
 <body>
     <header>
-        <img class="navbar_logo" src="img/logo.png" alt="Logo d'Orinoco" />
-        <a href="index.html" class="nav__link-basket mt-5">Accueil</a>
-    </header>
-    <main>
-        <div class="d-flex flex-row justify-content-around main-basket align-items-center">
-            <!-- <div id="basket-resume">
-            <p id="panierVide">Votre panier est vide</p>
-        </div> -->
-            <div class="basket-card">
-                <div class="d-flex flex-row justify-content-evenly pt-2">
-                    <h6 id="cameraName">Appareil photo</h6>
-                    <h6 id="cameraLense">Lentille</h6>
-                    <h6 id="cameraQuantity">Quantité</h6>
-                    <h6 id="cameraPrice">Prix</h6>
-                </div>
-                <h6 id="totalCost">TOTAL</h6>
+        <div class="limitedWidthBlockContainer informations">
+            <div class="limitedWidthBlock">
+                <ul>
+                    <li><img src="img/phone.svg" alt="logo de téléphone" class="informations__phone">01 23 45 67 89</li>
+                    <li><img src="img/mail.svg" alt="logo d'une enveloppe" class="informations__mail">support@name.com</li>
+                    <li><img src="img/adress.svg" alt="logo d'un point de géolocalisation"class="informations__address">10 boulevard Montmartre 75009 Paris</li>
+                </ul>
             </div>
-            <div class="form">
-                <form name="form-panier">
-                    <legend>Civilité</legend>
-                    <div class="form__group">
-                        <div class="form__group">
-                            <label for="formNom">Nom : </label>
-                            <input type="text" id="formNom" class="form-control input-control" required
-                                name="formNom" />
-                        </div>
-                        <div class="form__group">
-                            <label for="formPrenom" class="right-inline mt-2">Prénom :</label>
-                            <input type="text" id="formPrenom" class="form-control input-control" required
-                                name="formPrenom" />
-                        </div>
+        </div>
+        <div class="limitedWidthBlockContainer menu">
+            <div class="limitedWidthBlock">
+                <a href="./index.html">
+                    <img class="navbar_logo" src="img/logo.png" alt="Logo d'Orinoco">
+                </a>
+                <nav class="navbar_link">
+                    <ul>
+                        <a href="index.html">
+                            <li>Accueil</li>
+                        </a>
+                        <a href="panier.html">
+                            <li>Panier</li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <img class="banniere" src="img/background-img.jpg" alt="Banniere">
+    </header>
+    <main class="limitedWidthBlockContainer basket-container">
+        <div class="limitedWidthBlock" id="limitedWidthBlock">
+            <div class="cartAndFormContainer" id="cartAndFormContainer">
+                <p class="cameras_title text-center pb-3">Votre panier</p>
+                <section class="cart">
+                    <section id="cart__items"></section>
+                    <div class="cart__order">
+                        <h3>Coordonnées</h3>
+                        <form method="get" class="cart__order__form">
+                            <div class="cart__order__form__question firstName-container">
+                                <label for="firstName">Prénom: </label>
+                                <input type="text" name="firstName" id="firstName" required>
+                                <span></span>
+                            </div>
+                            <div class="cart__order__form__question lastName-container">
+                                <label for="lastName">Nom: </label>
+                                <input type="text" name="lastName" id="lastName" required>
+                                <span></span>
+                            </div>
+                            <div class="cart__order__form__question address-container">
+                                <label for="address">Adresse complète: </label>
+                                <input type="text" name="address" id="address" required>
+                                <span></span>
+                            </div>
+                            <div class="cart__order__form__question city-container">
+                                <label for="city">Ville: </label>
+                                <input type="text" name="city" id="city" required>
+                                <span></span>
+                            </div>
+                            <div class="cart__order__form__question email-container">
+                                <label for="email">Email: </label>
+                                <input type="email" name="email" id="email" required>
+                                <span></span>
+                            </div>
+                            <div class="cart__order__form__submit">
+                                <button id="order-submit" class="order-submit" onclick="validOrder()"> Commander!</button>
+                            </div>
+                        </form>
                     </div>
-                    <legend class="mt-3">Coordonnées</legend>
-                    <div class="form__group">
-                        <label for="formMail">E-mail :</label>
-                        <input type="email" id="formMail" class="form-control input-control" required name="formMail" />
-                    </div>
-                    <div class="form__group">
-                        <label for="formAdresse" class="mt-2">Adresse :</label>
-                        <input type="text" id="formAdresse" class="form-control input-control" required
-                            name="formAdresse" />
-                    </div>
-                    <div class="form__group">
-                        <label for="formVille" class="mt-2">Ville :</label>
-                        <input type="text" id="formVille" class="form-control input-control" required
-                            name="formVille" />
-                    </div>
-                    <button class="p-2 mt-5 btn-add" onclick="validOrder()">
-                        Je valide mon panier et mes informations
-                    </button>
-                </form>
+                </section>
             </div>
         </div>
     </main>
-    <footer class="footer-basket">
-        <p>
-            Site réalisé dans le cadre du projet 5 du parcours d'<a
-                href="https://openclassrooms.com/">Openclassrooms</a>
-        </p>
+    <footer>
+        <div class="limitedWidthBlockContainer footerMain">
+            <div class="limitedWidthBlock">
+                <div>
+                    <p>10 boulevard Montmartre <br>75009 Paris</p>
+                </div>
+                <div>
+                    <p>Téléphone : 01 23 45 67 89</p>
+                </div>
+                <div>
+                    <p>Email : support@name.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="limitedWidthBlockContainer footerSecondary">
+            <div class="limitedWidthBlock">
+                <p>© Copyright 2021 - 2042 | Site réalisé dans le cadre du projet 5 du parcours d'<a href="https://openclassrooms.com/">Openclassrooms</a> | All Rights Reserved</p>
+            </div>
+        </div>
     </footer>
 
     <script src="js/basket.js"></script>
