@@ -1,7 +1,6 @@
 // ------------------------ Page de confirmation ------------------------------------------------------
 let confirmOrder = document.getElementById("validOrder");
 let users = JSON.parse(localStorage.getItem("orderInfos"));
-console.log(users);
 
 function validationOrder() {
 

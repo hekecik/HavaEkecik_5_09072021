@@ -18,7 +18,6 @@ getArticles();
 // affichage de la liste des caméras
 function displayArticles(cameras) {
     cameras.forEach(camera => {
-        console.log(camera)
         const cameraDiv = document.getElementById("cameras");
         cameraDiv.innerHTML += `<div>
         <p class="camera-name">${camera.name}</p>

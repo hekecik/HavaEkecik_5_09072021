@@ -1,7 +1,6 @@
 // ------------------------ Page produit ------------------------------------------------------
 let params = new URL(document.location).searchParams;
 let idArticleChoisi = params.get("id");
-console.log(idArticleChoisi);
 let selectedCamera;
 let cameraDiv = document.getElementById("camera");
 let selectLense = document.getElementById("lensesChoice");
@@ -46,7 +45,6 @@ function getOneCamera(camera) {
 
 function addToBasket() {
     let products = JSON.parse(localStorage.getItem("products")) || [];
-    console.log(products);
     let total = JSON.parse(localStorage.getItem("total")) || 0;
     let quantity = document.getElementById("cameraQuantity").value;
     selectLense = document.getElementById("lensesChoice").value;

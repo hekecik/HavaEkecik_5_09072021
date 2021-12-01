@@ -1,7 +1,6 @@
 // ------------------------ Page panier ------------------------------------------------------
 let cameraInBasket = document.getElementById("cart__items");
 let products = JSON.parse(localStorage.getItem("products"));
-console.log(products);
 
 let totalPrice = JSON.parse(localStorage.getItem("prixTotalBasket"));
 
@@ -192,8 +191,9 @@ let listProductOrdered = [];
 
 function validOrder() {
 if (firstName.value || lastName.value || address.value || city.value || email.value == "") {
+
     alert('Veuillez renseignez correctement vos informations');
-    console.log(firstName.value)
+
 } else {
 
     for (let i = 0; i < products.length; i++) {
@@ -202,7 +202,6 @@ if (firstName.value || lastName.value || address.value || city.value || email.va
     localStorage.setItem("products", JSON.stringify(listProductOrdered))
     listProductOrdered = localStorage.getItem("products")
     listProductOrdered = JSON.parse(listProductOrdered)
-    console.log(listProductOrdered)
 
     let newClient = new Client(
         firstName,
@@ -236,12 +235,8 @@ if (firstName.value || lastName.value || address.value || city.value || email.va
         .then((data) => {
             localStorage.setItem("orderInfos", JSON.stringify(data))
             document.location = "./confirmation.html";
-            console.log(data)
         })
         .catch((error) => console.log("erreur de type : ", error))
     }
 
 };
-// orderSubmit.addEventListener("click", e => {
-//     e.preventDefault();
-// });
