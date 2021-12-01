@@ -187,9 +187,6 @@ function Client(firstName, lastName, address, city, email) {
     (this.city = city),
     (this.email = email);
 }
-console.log({
-    firstName: firstName.value
-})
 //---- Submit evenement -----------------------------------------------------------------------------//
 let listProductOrdered = [];
 
