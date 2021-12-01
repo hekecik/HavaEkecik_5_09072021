@@ -1,7 +1,6 @@
 // ------------------------ Page panier ------------------------------------------------------
 let cameraInBasket = document.getElementById("cart__items");
 let products = JSON.parse(localStorage.getItem("products"));
-
 let totalPrice = JSON.parse(localStorage.getItem("prixTotalBasket"));
 
 //----- Affichage des produits sélectionnés -------------------------
