@@ -134,7 +134,7 @@ let orderSubmit = document.getElementById('order-submit');
         }
     };
     const cityChecker = (value) => {
-        if (value == "") {
+        if (!value.match(/^[a-zA-Z-]+$/)) {
             errorDisplay("city", "Le champ est vide");
             city = "";
         } else {
