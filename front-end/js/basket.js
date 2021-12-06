@@ -107,21 +107,21 @@ let orderSubmit = document.getElementById('order-submit');
 
 // Vérifier la valeur des inputs ---------------------------------------------------//
     const firstNameChecker = (value) => {
-        if (value == "") {
-            errorDisplay("firstName", "Le champ est vide");
-            firstName = "";
+        if (!value.match(/^[a-zA-Z-]+$/)) {
+          errorDisplay("firstName", "Le prénom n'est pas valide");
+          firstName = "";
         } else {
-            errorDisplay("firstName", "", true);
-            firstName = value;
+          errorDisplay("firstName", "", true);
+          firstName = value;
         }
     };
     const lastNameChecker = (value) => {
-        if (value == "") {
-            errorDisplay("lastName", "Le champ est vide");
-            lastName = "";
+        if (!value.match(/^[a-zA-Z-]+$/)) {
+          errorDisplay("lastName", "Le nom n'est pas valide");
+          lastName = "";
         } else {
-            errorDisplay("lastName", "", true);
-            lastName = value;
+          errorDisplay("lastName", "", true);
+          lastName = value;
         }
     };
     const addressChecker = (value) => {
@@ -177,7 +177,7 @@ let orderSubmit = document.getElementById('order-submit');
         });
     });
 
-    //* Création de l'objet général client
+//------ Création de l'objet général client
 function Client(firstName, lastName, address, city, email) {
     (this.firstName = firstName),
     (this.lastName = lastName),
@@ -198,9 +198,7 @@ if (firstName.value || lastName.value || address.value || city.value || email.va
     for (let i = 0; i < products.length; i++) {
         listProductOrdered.push(products[i].camera._id)
     }
-    localStorage.setItem("products", JSON.stringify(listProductOrdered))
-    listProductOrdered = localStorage.getItem("products")
-    listProductOrdered = JSON.parse(listProductOrdered)
+
 
     let newClient = new Client(
         firstName,
@@ -232,6 +230,7 @@ if (firstName.value || lastName.value || address.value || city.value || email.va
             }
         })
         .then((data) => {
+            localStorage.clear()
             localStorage.setItem("orderInfos", JSON.stringify(data))
             document.location = "./confirmation.html";
         })
