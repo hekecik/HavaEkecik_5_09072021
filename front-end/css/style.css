@@ -297,6 +297,38 @@ footer .footerSecondary {
     padding-right: 50px;
 }
 
+
+.cart__item__content__titlePrice h2,
+.cart__item__content__titlePrice p {
+    margin: 0;
+}
+
+.cart__item__content__settings p {
+    margin: 0;
+}
+
+.cart__item__content__settings input {
+    color: #4A404D;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 2px solid #767676;
+    text-align: center;
+    text-align-last: center;
+}
+
+.cart__item__content__settings input:focus {
+    outline: none;
+}
+
+.cart__item__content__settings__quantity {
+    display: flex;
+}
+
+.cart__item__content__settings__quantity p {
+    margin-right: 10px;
+    display: flex;
+}
+
 .cart__item__content__settings__delete {
     color: white;
     padding: 10px 15px;
