@@ -33,7 +33,7 @@ function getOneCamera(camera) {
     cameraDiv.innerHTML += `<div class="cameras-product">
         <div class="bloc-product">
         <h4 class="cameras-name">${camera.name}</h4>
-        <img class="cameras-description-img" src="${camera.imageUrl}"/>
+        <img class="cameras-description-img" src="${camera.imageUrl}" alt="Image du produit sélectionné"/>
         </div>
         <div class="all-bloc"><div class="bloc-description"><h5> Description du produit</h5>
         <p class="cameras-description">${camera.description}</p></div>

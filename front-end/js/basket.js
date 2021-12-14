@@ -12,7 +12,7 @@ function getProductAdded() {
             cameraInBasket.innerHTML += `<article class="cart__item">
     <div class="cart__item__content">
         <div class="cart__item__img">
-            <img src="${product.camera.imageUrl}">
+            <img src="${product.camera.imageUrl}" alt="image du produit">
         </div>
         <div class="cart__item__content__description d-flex">
             <div class="cart__item__content__title">
@@ -31,7 +31,6 @@ function getProductAdded() {
         <div class="cart__item__content__settings">
             <div class="cart__item__content__settings__quantity">
                 <p>Qté : ${product.size} </p>
-                <span type="number" class="itemQuantity" name="cameraQuantity" min="1" max="100"/>
             </div>
             <div class="cart__item__content__settings__delete">
                 <p class="deleteItem">Supprimer</p>
@@ -52,7 +51,7 @@ function TotalPriceOfBasket() {
         visible.classList.add("hidden-price");
     } else {
         cameraInBasket.innerHTML += ` <div class="cart__price">
-        <p>Total<span> ${totalPrice} </> €</p>
+        <p>Total <span> ${totalPrice} </span> €</p>
         </div>`;
 
     }
